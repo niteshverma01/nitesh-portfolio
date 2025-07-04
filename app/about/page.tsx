@@ -1,4 +1,4 @@
-"use client"
+  "use client"
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
@@ -360,21 +360,24 @@ export default function AboutPage() {
 
                     {/* Social Links */}
                     <div className="flex gap-2 pt-2">
-                      {[
-                        { icon: Github, href: "#", color: "hover:bg-gray-600" },
-                        { icon: Linkedin, href: "#", color: "hover:bg-blue-600" },
-                        { icon: ExternalLink, href: "#", color: "hover:bg-purple-600" },
-                      ].map((social, index) => (
-                        <Button
-                          key={index}
-                          variant="outline"
-                          size="sm"
-                          className={`flex-1 border-white/20 text-white bg-transparent ${social.color} group`}
-                        >
-                          <social.icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                        </Button>
-                      ))}
-                    </div>
+  {[
+    { Icon: Github, href: "https://github.com/niteshverma01", color: "hover:bg-gray-600" },
+    { Icon: Linkedin, href: "https://www.linkedin.com/in/nitesh--verma01/", color: "hover:bg-blue-600" },
+    { Icon: ExternalLink, href: "https://your-portfolio.com", color: "hover:bg-purple-600" }, // Replace with valid URL
+  ].map((social) => (
+    <Button
+      key={social.href} // Use href as a unique key
+      variant="outline"
+      size="sm"
+      className={`flex-1 border-white/20 text-white bg-transparent ${social.color} group`}
+      asChild // If Button supports passing as a link (e.g., from shadcn/ui)
+    >
+      <a href={social.href} target="_blank" rel="noopener noreferrer">
+        <social.Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+      </a>
+    </Button>
+  ))}
+</div>
                   </div>
                 </CardContent>
               </Card>

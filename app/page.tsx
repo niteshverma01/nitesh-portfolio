@@ -145,7 +145,7 @@ export default function HomePage() {
         "Collaborated with cross-functional teams",
         "Implemented modern UI/UX designs",
       ],
-      technologies: ["React.js", "Node.js", "MongoDB", "Express.js"],
+      technologies: ["React.js","Next.js", "Node.js", "MongoDB", "Express.js"],
       color: "from-green-500 to-emerald-500",
       icon: "💼",
       location: "Remote",
@@ -165,7 +165,7 @@ export default function HomePage() {
         "Implemented responsive designs",
         "Enhanced user experience",
       ],
-      technologies: ["React.js", "JavaScript", "CSS3", "Bootstrap"],
+      technologies: ["Angular", "Typescript", "CSS3", "Bootstrap"],
       color: "from-blue-500 to-cyan-500",
       icon: "⚡",
       location: "Remote",
@@ -399,16 +399,17 @@ export default function HomePage() {
         {/* Enhanced Floating Particles */}
         <div className="absolute inset-0">
           {[...Array(30)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-white/20 rounded-full animate-float"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${3 + Math.random() * 4}s`,
-              }}
-            ></div>
+          <div
+  key={`dot-${i}`} // Unique key to avoid React reconciliation issues
+  className="absolute w-1 h-1 bg-white/20 rounded-full animate-float"
+  style={{
+    left: `${Math.random() * 100}%`,
+    top: `${Math.random() * 100}%`,
+    animationDelay: `${Math.random() * 5}s`,
+    animationDuration: `${3 + Math.random() * 4}s`,
+  }}
+  aria-hidden="true" // Mark as decorative for accessibility
+></div>
           ))}
         </div>
       </div>
