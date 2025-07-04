@@ -42,6 +42,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EnhancedFooter } from "@/components/enhanced-footer";
 import myimage from "../public/myimage.jpg";
+import bookstore from "../public/bookstore.png"
+import wonderlust from "../public/wanderlust.png"
+import weather from "../public/weather.png"
 export default function HomePage() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isLoaded, setIsLoaded] = useState(false);
@@ -204,7 +207,7 @@ export default function HomePage() {
         "Stripe",
         "JWT",
       ],
-      image: "/placeholder.svg?height=200&width=300",
+      image: bookstore,
       liveUrl: "#",
       sourceUrl: "#",
       category: "E-commerce",
@@ -219,7 +222,7 @@ export default function HomePage() {
       longDescription:
         "A travel booking platform with property listings, user reviews, booking management system, and interactive maps integration.",
       technologies: ["EJS", "Node.js", "MongoDB", "Bootstrap", "Cloudinary"],
-      image: "/placeholder.svg?height=200&width=300",
+      image: wonderlust,
       liveUrl: "#",
       sourceUrl: "#",
       category: "Travel",
@@ -235,7 +238,7 @@ export default function HomePage() {
       longDescription:
         "A beautiful weather app with current conditions, 7-day forecast, weather maps, and location-based weather alerts.",
       technologies: ["React.js", "Tailwind CSS", "Weather API", "Chart.js"],
-      image: "/placeholder.svg?height=200&width=300",
+      image: weather,
       liveUrl: "#",
       sourceUrl: "#",
       category: "Utility",
@@ -1087,7 +1090,7 @@ export default function HomePage() {
               >
                 <Card className="bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group h-full overflow-hidden hover:scale-105">
                   <div className="relative overflow-hidden">
-                    <img
+                    <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"

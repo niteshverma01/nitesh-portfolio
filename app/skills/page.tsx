@@ -95,35 +95,35 @@ export default function SkillsPage() {
         { name: "REST APIs", level: 88, description: "RESTful web services and API design", experience: "2+ years" },
       ],
     },
-    {
-      title: "AI & Machine Learning",
-      icon: Brain,
-      color: "from-purple-500 to-indigo-500",
-      description: "Exploring artificial intelligence and data science",
-      skills: [
-        { name: "Python", level: 85, description: "Data science, ML, and general programming", experience: "2+ years" },
-        {
-          name: "Machine Learning",
-          level: 78,
-          description: "Supervised and unsupervised learning algorithms",
-          experience: "1+ year",
-        },
-        {
-          name: "Data Science",
-          level: 80,
-          description: "Data analysis, visualization, and insights",
-          experience: "1+ year",
-        },
-        {
-          name: "TensorFlow",
-          level: 70,
-          description: "Deep learning framework for neural networks",
-          experience: "6+ months",
-        },
-        { name: "Pandas", level: 82, description: "Data manipulation and analysis library", experience: "1+ year" },
-        { name: "NumPy", level: 80, description: "Numerical computing and array operations", experience: "1+ year" },
-      ],
-    },
+    // {
+    //   title: "AI & Machine Learning",
+    //   icon: Brain,
+    //   color: "from-purple-500 to-indigo-500",
+    //   description: "Exploring artificial intelligence and data science",
+    //   skills: [
+    //     { name: "Python", level: 85, description: "Data science, ML, and general programming", experience: "2+ years" },
+    //     {
+    //       name: "Machine Learning",
+    //       level: 78,
+    //       description: "Supervised and unsupervised learning algorithms",
+    //       experience: "1+ year",
+    //     },
+    //     {
+    //       name: "Data Science",
+    //       level: 80,
+    //       description: "Data analysis, visualization, and insights",
+    //       experience: "1+ year",
+    //     },
+    //     {
+    //       name: "TensorFlow",
+    //       level: 70,
+    //       description: "Deep learning framework for neural networks",
+    //       experience: "6+ months",
+    //     },
+    //     { name: "Pandas", level: 82, description: "Data manipulation and analysis library", experience: "1+ year" },
+    //     { name: "NumPy", level: 80, description: "Numerical computing and array operations", experience: "1+ year" },
+    //   ],
+    // },
     {
       title: "Tools & Technologies",
       icon: Wrench,
@@ -324,7 +324,7 @@ export default function SkillsPage() {
           </div>
 
           {/* Certifications Section */}
-          <div
+          {/* <div
             className={`mb-16 transition-all duration-1000 delay-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <Card className="bg-white/5 backdrop-blur-xl border border-white/10">
@@ -356,7 +356,7 @@ export default function SkillsPage() {
                 </div>
               </CardContent>
             </Card>
-          </div>
+          </div> */}
 
           {/* Additional Skills */}
           <div

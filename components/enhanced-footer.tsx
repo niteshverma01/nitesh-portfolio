@@ -122,7 +122,7 @@ export function EnhancedFooter() {
 
       <div className="relative z-10">
         {/* Newsletter Section */}
-        <div className="py-12 px-4 sm:px-6 border-b border-slate-800/50">
+        {/* <div className="py-12 px-4 sm:px-6 border-b border-slate-800/50">
           <div className="max-w-7xl mx-auto">
             <Card className="bg-white/5 backdrop-blur-xl border border-white/10 overflow-hidden">
               <div className="bg-gradient-to-r from-purple-600/20 to-pink-600/20 p-8 sm:p-12">
@@ -171,7 +171,7 @@ export function EnhancedFooter() {
               </div>
             </Card>
           </div>
-        </div>
+        </div> */}
 
         {/* Main Footer Content */}
         <div className="py-16 px-4 sm:px-6">
@@ -346,15 +346,15 @@ export function EnhancedFooter() {
                   <p className="text-gray-400 text-sm mb-2">
                     © 2025 Nitesh Verma. All rights reserved.   
                   </p>
-                  <div className="flex items-center justify-center md:justify-start gap-2 text-xs text-gray-500">
+                  {/* <div className="flex items-center justify-center md:justify-start gap-2 text-xs text-gray-500">
                     <span>Made with</span>
                     <Heart className="w-3 h-3 text-red-400 animate-pulse" />
                     <span>and lots of</span>
-                    <Coffee className="w-3 h-3 text-yellow-400" />
+                    <Coffee className="w-3 h-3 text-yellow-400" /> */}
                     {/* <span>in India</span> */}
                     {/* <span className="mx-2">•</span> */}
                     {/* <span>Last updated: {new Date().toLocaleDateString()}</span> */}
-                  </div>
+                  {/* </div> */}
                 </div>
 
                 {/* Quick Actions */}

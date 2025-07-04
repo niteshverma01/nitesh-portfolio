@@ -4,6 +4,8 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
+import myimage from "../../public/myimage.jpg";
+import Image from "next/image"
 import {
   GraduationCap,
   MapPin,
@@ -21,7 +23,7 @@ import {
   Brain,
   Palette,
   Globe,
-  Music,
+  Bed,
   Camera,
   Gamepad2,
   Book,
@@ -62,17 +64,17 @@ export default function AboutPage() {
       value: "Jabalpur Engineering College",
       color: "from-purple-500 to-pink-500",
     },
-    { icon: Code, label: "Major", value: "AI & Data Science", color: "from-green-500 to-emerald-500" },
+    { icon: Code, label: "Branch", value: "AI & Data Science", color: "from-green-500 to-emerald-500" },
     { icon: Calendar, label: "Year", value: "4th Year Student", color: "from-orange-500 to-red-500" },
     { icon: MapPin, label: "Location", value: "Jabalpur, MP, India", color: "from-indigo-500 to-purple-500" },
-    { icon: Briefcase, label: "Experience", value: "2+ Years", color: "from-pink-500 to-rose-500" },
+    { icon: Briefcase, label: "Experience", value: "1+ Years", color: "from-pink-500 to-rose-500" },
   ]
 
   const coreSkills = [
     { name: "React.js", level: 90, icon: "⚛️", color: "from-blue-500 to-cyan-500" },
     { name: "Next.js", level: 85, icon: "🚀", color: "from-purple-500 to-pink-500" },
     { name: "Node.js", level: 85, icon: "🟢", color: "from-green-500 to-emerald-500" },
-    { name: "Python", level: 85, icon: "🐍", color: "from-yellow-500 to-orange-500" },
+    { name: "MySql", level: 70, icon: "🐟", color: "from-yellow-500 to-orange-500" },
     { name: "TypeScript", level: 80, icon: "📘", color: "from-indigo-500 to-purple-500" },
     { name: "MongoDB", level: 80, icon: "🍃", color: "from-green-600 to-teal-500" },
   ]
@@ -84,12 +86,13 @@ export default function AboutPage() {
       color: "from-blue-500 to-cyan-500",
       description: "Building modern web apps",
     },
-    {
-      icon: Brain,
-      label: "AI & Machine Learning",
-      color: "from-purple-500 to-indigo-500",
-      description: "Exploring AI possibilities",
-    },
+ {
+  icon: Brain,
+  label: "Database",
+  color: "from-purple-500 to-indigo-500",
+  description: "Managing and structuring data",
+},
+
     {
       icon: Palette,
       label: "UI/UX Design",
@@ -103,10 +106,10 @@ export default function AboutPage() {
       description: "Contributing to community",
     },
     {
-      icon: Music,
-      label: "Music Production",
-      color: "from-yellow-500 to-orange-500",
-      description: "Creating beats & melodies",
+      icon: Bed,
+     label: "Sleeping",
+    color: "from-yellow-500 to-orange-500",
+    description: "Recharging creativity",
     },
     { icon: Camera, label: "Photography", color: "from-indigo-500 to-purple-500", description: "Capturing moments" },
     { icon: Gamepad2, label: "Gaming", color: "from-red-500 to-pink-500", description: "Strategy & adventure games" },
@@ -114,10 +117,10 @@ export default function AboutPage() {
   ]
 
   const achievements = [
-    { icon: Trophy, title: "15+ Projects", description: "Successfully completed projects", count: "15+" },
+    { icon: Trophy, title: "30+ Projects", description: "Successfully completed projects", count: "30+" },
     { icon: Star, title: "Top Performer", description: "Recognized in internships", count: "3x" },
-    { icon: Users, title: "Team Collaborations", description: "Cross-functional team projects", count: "10+" },
-    { icon: Award, title: "Certifications", description: "Professional certifications", count: "5+" },
+    // { icon: Users, title: "Team Collaborations", description: "Cross-functional team projects", count: "10+" },
+    // { icon: Award, title: "Certifications", description: "Professional certifications", count: "5+" },
   ]
 
   const funFacts = [
@@ -130,13 +133,17 @@ export default function AboutPage() {
   ]
 
   const timeline = [
-    { year: "2021", title: "Started Programming", description: "First line of code in Python", icon: Code },
-    { year: "2022", title: "Web Development", description: "Discovered React & fell in love", icon: Heart },
-    { year: "2023", title: "First Internship", description: "CodeXintern - React Developer", icon: Rocket },
+    { year: "2023", title: "Started Programming", description: "First line of code in Python", icon: Code },
+    { year: "2024", title: "Web Development", description: "Discovered React & fell in love", icon: Heart },
     { year: "2024", title: "Full Stack Journey", description: "Mastered MERN stack development", icon: Zap },
-    { year: "2024", title: "AI Exploration", description: "Diving deep into ML & AI", icon: Brain },
+    { year: "2025", title: "First Internship", description: "CodeXintern - React Developer", icon: Rocket },
+{
+  year: "2025",
+  title: "Third Internship",
+  description: "Building scalable web apps with modern stacks",
+  icon: Brain,
+}
   ]
-
   const tabs = [
     { id: "story", label: "My Story", icon: User },
     { id: "skills", label: "Skills", icon: Code },
@@ -280,13 +287,15 @@ export default function AboutPage() {
                   <div className="text-center mb-8">
                     {/* Enhanced Avatar */}
                     <div className="relative inline-block group mb-6">
-                      <div className="w-32 h-32 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl p-1 group-hover:scale-105 transition-transform duration-300 animate-gradient bg-[length:200%_200%]">
-                        <div className="w-full h-full bg-slate-950 rounded-xl flex items-center justify-center relative overflow-hidden">
-                          <User className="w-16 h-16 text-white/80" />
-                          {/* Shine Effect */}
-                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                        </div>
-                      </div>
+                   <div className="w-32 h-32 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl p-1 group hover:scale-105 transition-transform duration-300 animate-gradient bg-[length:200%_200%]">
+  <div className="w-full h-full bg-slate-950 rounded-xl flex items-center justify-center relative overflow-hidden">
+    <Image src={myimage} alt="my image" className="w-full h-full object-cover rounded-xl" />
+    
+    {/* Shine effect */}
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+  </div>
+</div>
+
 
                       {/* Status Indicators */}
                       <div className="absolute -top-2 -right-2 flex gap-1">
@@ -309,9 +318,7 @@ export default function AboutPage() {
                       <Badge className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
                         Full Stack Developer
                       </Badge>
-                      <Badge variant="outline" className="border-blue-400 text-blue-300">
-                        AI Enthusiast
-                      </Badge>
+                     
                     </div>
                   </div>
 
@@ -607,10 +614,7 @@ export default function AboutPage() {
                   </CardContent>
                 </Card>
               </div>
-            </div>
-          </div>
-
-          {/* Enhanced CTA Section */}
+                  {/* Enhanced CTA Section */}
           <div
             className={`text-center transition-all duration-1000 delay-1300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
@@ -652,6 +656,10 @@ export default function AboutPage() {
               </div>
             </Card>
           </div>
+            </div>
+          </div>
+
+      
         </div>
       </main>
     </div>

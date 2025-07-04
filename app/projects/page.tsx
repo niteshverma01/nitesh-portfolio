@@ -6,7 +6,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { ExternalLink, Github, ArrowLeft, Eye, Star, GitFork, Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
+import Image from "next/image"
 import Link from "next/link"
+import bookstore from "../../public/bookstore.png"
+import wonderlust from "../../public/wanderlust.png"
+import tazza from "../../public/tazza.png"
+import myclinic from "../../public/clinic.png"
+import portfolio from "../../public/portfolio.png"
+import weather from "../../public/weather.png"
 
 export default function ProjectsPage() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -28,15 +35,12 @@ export default function ProjectsPage() {
       technologies: ["React.js", "Node.js", "MongoDB", "Express.js", "JWT", "Stripe", "Redux"],
       features: [
         "User Authentication",
-        "Payment Gateway",
-        "Admin Dashboard",
         "Book Search",
-        "Shopping Cart",
-        "Order Tracking",
+        
       ],
       liveUrl: "#",
       sourceUrl: "#",
-      image: "/placeholder.svg?height=300&width=500",
+      image: bookstore,
       status: "Completed",
       category: "Full Stack",
       stats: { stars: 24, forks: 8, views: 156 },
@@ -56,11 +60,11 @@ export default function ProjectsPage() {
         "Booking System",
         "Image Upload",
         "Location Maps",
-        "Real-time Chat",
+       
       ],
       liveUrl: "#",
       sourceUrl: "#",
-      image: "/placeholder.svg?height=300&width=500",
+      image: wonderlust,
       status: "Completed",
       category: "Web App",
       stats: { stars: 18, forks: 12, views: 203 },
@@ -84,7 +88,7 @@ export default function ProjectsPage() {
       ],
       liveUrl: "#",
       sourceUrl: "#",
-      image: "/placeholder.svg?height=300&width=500",
+      image: tazza,
       status: "Completed",
       category: "Frontend",
       stats: { stars: 15, forks: 6, views: 89 },
@@ -108,7 +112,7 @@ export default function ProjectsPage() {
       ],
       liveUrl: "#",
       sourceUrl: "#",
-      image: "/placeholder.svg?height=300&width=500",
+      image: myclinic,
       status: "Completed",
       category: "Web App",
       stats: { stars: 21, forks: 9, views: 134 },
@@ -131,7 +135,7 @@ export default function ProjectsPage() {
       ],
       liveUrl: "#",
       sourceUrl: "#",
-      image: "/placeholder.svg?height=300&width=500",
+      image: weather,
       status: "Completed",
       category: "React App",
       stats: { stars: 32, forks: 14, views: 267 },
@@ -154,7 +158,7 @@ export default function ProjectsPage() {
       ],
       liveUrl: "#",
       sourceUrl: "#",
-      image: "/placeholder.svg?height=300&width=500",
+      image: portfolio,
       status: "Ongoing",
       category: "Portfolio",
       stats: { stars: 45, forks: 23, views: 412 },
@@ -299,13 +303,13 @@ export default function ProjectsPage() {
                 className={`transition-all duration-1000 delay-${(index + 1) * 100} ${
                   isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
                 }`}
-                onMouseEnter={() => setHoveredProject(index)}
-                onMouseLeave={() => setHoveredProject(null)}
+                // onMouseEnter={() => setHoveredProject(index)}
+                // onMouseLeave={() => setHoveredProject(null)}
               >
                 <Card className="bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group h-full overflow-hidden">
                   {/* Project Image */}
                   <div className="relative overflow-hidden">
-                    <img
+                    <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
                       className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
