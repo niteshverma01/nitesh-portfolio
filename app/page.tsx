@@ -318,18 +318,7 @@ export default function HomePage() {
       color: "from-green-500 to-emerald-500",
       skills: ["Node.js", "Express.js", "MongoDB", "PostgreSQL"],
     },
-    {
-      title: "Mobile",
-      icon: Smartphone,
-      color: "from-purple-500 to-pink-500",
-      skills: ["React Native", "Flutter", "iOS", "Android"],
-    },
-    {
-      title: "AI/ML",
-      icon: Brain,
-      color: "from-orange-500 to-red-500",
-      skills: ["Python", "TensorFlow", "PyTorch", "Scikit-learn"],
-    },
+   
   ];
 
   useEffect(() => {
@@ -1496,8 +1485,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Enhanced Footer */}
-      <EnhancedFooter />
     </div>
   );
 }
