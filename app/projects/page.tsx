@@ -1,30 +1,30 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { ExternalLink, Github, ArrowLeft, Eye, Star, GitFork, Search, Menu, X } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import Image from "next/image"
-import Link from "next/link"
-import bookstore from "../../public/e-books.png"
-import wonderlust from "../../public/wanderlust.png"
-import tazza from "../../public/tazza.png"
-import myclinic from "../../public/clinic.png"
-import portfolio from "../../public/portfolio.png"
-import weather from "../../public/weather.png"
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink, Github, ArrowLeft, Eye, Star, GitFork, Search, Menu, X } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import Image from "next/image";
+import Link from "next/link";
+import bookstore from "../../public/e-books.png";
+import wonderlust from "../../public/wanderlust.png";
+import tazza from "../../public/tazza.png";
+import myclinic from "../../public/clinic.png";
+import portfolio from "../../public/portfolio.png";
+import weather from "../../public/weather.png";
 
 export default function ProjectsPage() {
-  const [isLoaded, setIsLoaded] = useState(false)
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null)
-  const [searchTerm, setSearchTerm] = useState("")
-  const [selectedCategory, setSelectedCategory] = useState("All")
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true)
-  }, [])
+    setIsLoaded(true);
+  }, []);
 
   const navItems = [
     { href: "/about", label: "About" },
@@ -32,10 +32,9 @@ export default function ProjectsPage() {
     { href: "/skills", label: "Skills" },
     { href: "/projects", label: "Projects" },
     { href: "/contact", label: "Contact" },
-  ]
+  ];
 
   const projects = [
-    
     {
       title: "Wanderlust",
       description:
@@ -136,31 +135,31 @@ export default function ProjectsPage() {
       year: "2024",
       difficulty: "Advanced",
     },
-  ]
+  ];
 
-  const categories = ["All", "Full Stack", "Web App", "Frontend", "React App", "Portfolio"]
+  const categories = ["All", "Full Stack", "Web App", "Frontend", "React App", "Portfolio"];
 
   const filteredProjects = projects.filter((project) => {
     const matchesSearch =
       project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      project.technologies.some((tech) => tech.toLowerCase().includes(searchTerm.toLowerCase()))
-    const matchesCategory = selectedCategory === "All" || project.category === selectedCategory
-    return matchesSearch && matchesCategory
-  })
+      project.technologies.some((tech) => tech.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchesCategory = selectedCategory === "All" || project.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950 relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]"></div>
+        <div className="absolute top-1/4 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:50px_50px]" />
       </div>
 
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-black/10 backdrop-blur-xl border-b border-white/5">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <Link
               href="/"
@@ -170,7 +169,7 @@ export default function ProjectsPage() {
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
+            <div className="hidden md:flex items-center space-x-6">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
@@ -184,7 +183,7 @@ export default function ProjectsPage() {
                     className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 ${
                       item.href === "/projects" ? "w-full" : "w-0 group-hover:w-full"
                     }`}
-                  ></span>
+                  />
                 </Link>
               ))}
             </div>
@@ -216,7 +215,7 @@ export default function ProjectsPage() {
                       item.href === "/projects" ? "text-purple-400 font-semibold" : ""
                     }`}
                   >
-                    <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                    <div className="w-2 h-2 bg-purple-400 rounded-full" />
                     {item.label}
                   </Link>
                 ))}
@@ -233,11 +232,11 @@ export default function ProjectsPage() {
         </div>
       </nav>
 
-      <main className="relative z-10 pt-20 pb-16 px-0 sm:px-6">
-        <div className="mx-auto max-w-7xl px-4 sm:px-0">
+      <main className="relative z-10 pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           {/* Back Button */}
           <Link href="/">
-            <Button variant="ghost" className="mb-8 text-white/70 hover:text-white hover:bg-white/10">
+            <Button variant="ghost" className="mb-6 sm:mb-8 text-white/70 hover:text-white hover:bg-white/10 flex items-center">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
             </Button>
@@ -245,21 +244,19 @@ export default function ProjectsPage() {
 
           {/* Page Header */}
           <div
-            className={`text-center mb-12 transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            className={`text-center mb-10 sm:mb-14 transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Projects
-              </span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Projects</span>
             </h1>
-            <p className="text-lg sm:text-xl text-white/70 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-white/70 max-w-2xl mx-auto leading-relaxed">
               A showcase of my work, featuring web applications, tools, and experiments that demonstrate my skills and creativity.
             </p>
           </div>
 
           {/* Search and Filter Section */}
           <div
-            className={`mb-12 transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            className={`mb-8 sm:mb-12 transition-all duration-1000 delay-300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
             <Card className="bg-white/5 backdrop-blur-xl border border-white/10 p-4 sm:p-6">
               <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 items-center">
@@ -281,7 +278,7 @@ export default function ProjectsPage() {
                       variant={selectedCategory === category ? "default" : "outline"}
                       onClick={() => setSelectedCategory(category)}
                       size="sm"
-                      className={`rounded-full transition-all duration-300 text-sm ${
+                      className={`rounded-full transition-all duration-300 text-xs sm:text-sm ${
                         selectedCategory === category
                           ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
                           : "border-white/20 text-white/80 hover:bg-white/10 hover:text-white bg-transparent"
@@ -296,7 +293,7 @@ export default function ProjectsPage() {
           </div>
 
           {/* Projects Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
             {filteredProjects.map((project, index) => (
               <div
                 key={index}
@@ -311,24 +308,24 @@ export default function ProjectsPage() {
                     <Image
                       src={project.image || "/placeholder.svg"}
                       alt={project.title}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-32 sm:h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="absolute top-4 left-4 right-4 flex justify-between">
+                    <div className="absolute top-2 left-2 right-2 flex justify-between">
                       <Badge
                         variant={project.status === "Ongoing" ? "default" : "secondary"}
-                        className={project.status === "Ongoing" ? "bg-green-600 text-white" : "bg-slate-600 text-white"}
+                        className={project.status === "Ongoing" ? "bg-green-600 text-white text-xs" : "bg-slate-600 text-white text-xs"}
                       >
                         {project.status}
                       </Badge>
-                      <Badge variant="outline" className="border-white/40 text-white bg-black/20 backdrop-blur-sm">
+                      <Badge variant="outline" className="border-white/40 text-white bg-black/20 backdrop-blur-sm text-xs">
                         {project.year}
                       </Badge>
                     </div>
-                    <div className="absolute bottom-4 right-4">
+                    <div className="absolute bottom-2 right-2">
                       <Badge
                         variant="outline"
-                        className={`border-white/40 text-white bg-black/20 backdrop-blur-sm ${
+                        className={`border-white/40 text-white bg-black/20 backdrop-blur-sm text-xs ${
                           project.difficulty === "Advanced"
                             ? "border-red-400 text-red-300"
                             : project.difficulty === "Intermediate"
@@ -340,21 +337,21 @@ export default function ProjectsPage() {
                       </Badge>
                     </div>
                   </div>
-                  <CardHeader className="pb-4">
-                    <div className="flex items-start justify-between mb-2">
-                      <CardTitle className="text-lg sm:text-xl text-white group-hover:text-purple-300 transition-colors flex-1">
+                  <CardHeader className="pb-2 sm:pb-4">
+                    <div className="flex items-start justify-between mb-1 sm:mb-2">
+                      <CardTitle className="text-base sm:text-lg text-white group-hover:text-purple-300 transition-colors flex-1">
                         {project.title}
                       </CardTitle>
-                      <Badge variant="outline" className="border-purple-500 text-purple-300 text-xs ml-2">
+                      <Badge variant="outline" className="border-purple-500 text-purple-300 text-xs sm:text-sm ml-1">
                         {project.category}
                       </Badge>
                     </div>
-                    <p className="text-white/70 text-sm leading-relaxed">
+                    <p className="text-white/70 text-xs sm:text-sm leading-relaxed">
                       {hoveredProject === index ? project.longDescription : project.description}
                     </p>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="flex flex-wrap gap-2">
+                  <CardContent className="space-y-2 sm:space-y-4 p-2 sm:p-4">
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {project.technologies.slice(0, 4).map((tech) => (
                         <Badge key={tech} variant="outline" className="border-white/20 text-white/70 text-xs">
                           {tech}
@@ -368,10 +365,10 @@ export default function ProjectsPage() {
                     </div>
                     {hoveredProject === index && (
                       <div className="animate-fade-in">
-                        <h4 className="text-white font-semibold text-sm mb-2">Key Features:</h4>
+                        <h4 className="text-white font-semibold text-xs sm:text-sm mb-1">Key Features:</h4>
                         <ul className="space-y-1">
                           {project.features.slice(0, 3).map((feature, i) => (
-                            <li key={i} className="flex items-center gap-2 text-white/60 text-xs">
+                            <li key={i} className="flex items-center gap-1 text-white/60 text-xs">
                               <div className="w-1 h-1 bg-purple-400 rounded-full"></div>
                               <span>{feature}</span>
                             </li>
@@ -379,7 +376,7 @@ export default function ProjectsPage() {
                         </ul>
                       </div>
                     )}
-                    <div className="flex items-center gap-4 text-white/60 text-xs">
+                    <div className="flex items-center gap-2 text-white/60 text-xs">
                       <div className="flex items-center gap-1">
                         <Star className="w-3 h-3" />
                         <span>{project.stats.stars}</span>
@@ -393,19 +390,23 @@ export default function ProjectsPage() {
                         <span>{project.stats.views}</span>
                       </div>
                     </div>
-                    <div className="flex gap-3 pt-2">
-                      <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white flex-1">
-                        <ExternalLink className="h-3 w-3 mr-2" />
-                        Live Demo
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white bg-transparent flex-1"
-                      >
-                        <Github className="h-3 w-3 mr-2" />
-                        Code
-                      </Button>
+                    <div className="flex gap-2 pt-1 sm:pt-2">
+                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                        <Button size="sm" className="bg-purple-600 hover:bg-purple-700 text-white w-full flex-1">
+                          <ExternalLink className="h-3 w-3 mr-1" />
+                          Live Demo
+                        </Button>
+                      </a>
+                      <a href={project.sourceUrl} target="_blank" rel="noopener noreferrer">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white bg-transparent w-full flex-1"
+                        >
+                          <Github className="h-3 w-3 mr-1" />
+                          Code
+                        </Button>
+                      </a>
                     </div>
                   </CardContent>
                 </Card>
@@ -415,19 +416,19 @@ export default function ProjectsPage() {
 
           {/* No Results */}
           {filteredProjects.length === 0 && (
-            <div className="text-center py-16">
-              <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Search className="w-12 h-12 text-white/40" />
+            <div className="text-center py-12 sm:py-16">
+              <div className="w-16 sm:w-24 h-16 sm:h-24 bg-white/10 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6">
+                <Search className="w-8 sm:w-12 h-8 sm:h-12 text-white/40" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">No Projects Found</h3>
-              <p className="text-white/70 mb-6">Try adjusting your search terms or filters.</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-2 sm:mb-4">No Projects Found</h3>
+              <p className="text-white/70 mb-4 sm:mb-6 text-sm sm:text-base">Try adjusting your search terms or filters.</p>
               <Button
                 onClick={() => {
-                  setSearchTerm("")
-                  setSelectedCategory("All")
+                  setSearchTerm("");
+                  setSelectedCategory("All");
                 }}
                 variant="outline"
-                className="border-white/20 text-white hover:bg-white/10 bg-transparent"
+                className="border-white/20 text-white hover:bg-white/10 bg-transparent text-sm sm:text-base"
               >
                 Clear Filters
               </Button>
@@ -436,23 +437,23 @@ export default function ProjectsPage() {
 
           {/* Call to Action */}
           <div
-            className={`text-center transition-all duration-1000 delay-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+            className={`text-center mt-12 sm:mt-16 transition-all duration-1000 delay-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
           >
-            <Card className="bg-white/5 backdrop-blur-xl border border-white/10 p-6 sm:p-8">
-              <h3 className="text-xl sm:text-2xl font-bold text-white mb-4">Have a Project in Mind?</h3>
-              <p className="text-white/70 mb-6 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">
+            <Card className="bg-white/5 backdrop-blur-xl border border-white/10 p-4 sm:p-6 lg:p-8">
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Have a Project in Mind?</h3>
+              <p className="text-white/70 mb-4 sm:mb-6 max-w-xl mx-auto leading-relaxed text-sm sm:text-base">
                 I'm always excited to work on new projects and bring innovative ideas to life. Let's collaborate and create something amazing together.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
                 <Link href="/contact">
-                  <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105">
+                  <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105">
                     Start a Project
                   </Button>
                 </Link>
                 <Link href="/skills">
                   <Button
                     variant="outline"
-                    className="border-2 border-white/20 text-white hover:bg-white/10 px-6 sm:px-8 py-2 sm:py-3 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 backdrop-blur-sm bg-transparent"
+                    className="border-2 border-white/20 text-white hover:bg-white/10 px-4 sm:px-6 py-2 sm:py-3 rounded-full text-base sm:text-lg font-semibold transition-all duration-300 backdrop-blur-sm bg-transparent"
                   >
                     View My Skills
                   </Button>
@@ -463,5 +464,5 @@ export default function ProjectsPage() {
         </div>
       </main>
     </div>
-  )
+  );
 }

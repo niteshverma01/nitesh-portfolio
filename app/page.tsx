@@ -42,7 +42,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { EnhancedFooter } from "@/components/enhanced-footer";
 import myimage from "../public/myimage.jpg";
-import bookstore from "../public/bookstore.png"
+import bookstore from "../public/e-books.png"
 import wonderlust from "../public/wanderlust.png"
 import weather from "../public/weather.png"
 export default function HomePage() {
@@ -145,7 +145,7 @@ export default function HomePage() {
         "Collaborated with cross-functional teams",
         "Implemented modern UI/UX designs",
       ],
-      technologies: ["React.js","Next.js", "Node.js", "MongoDB", "Express.js"],
+      technologies: ["React.js", "Next.js", "Node.js", "MongoDB", "Express.js"],
       color: "from-green-500 to-emerald-500",
       icon: "💼",
       location: "Remote",
@@ -318,7 +318,7 @@ export default function HomePage() {
       color: "from-green-500 to-emerald-500",
       skills: ["Node.js", "Express.js", "MongoDB", "PostgreSQL"],
     },
-   
+
   ];
 
   useEffect(() => {
@@ -388,17 +388,17 @@ export default function HomePage() {
         {/* Enhanced Floating Particles */}
         <div className="absolute inset-0">
           {[...Array(30)].map((_, i) => (
-          <div
-  key={`dot-${i}`} // Unique key to avoid React reconciliation issues
-  className="absolute w-1 h-1 bg-white/20 rounded-full animate-float"
-  style={{
-    left: `${Math.random() * 100}%`,
-    top: `${Math.random() * 100}%`,
-    animationDelay: `${Math.random() * 5}s`,
-    animationDuration: `${3 + Math.random() * 4}s`,
-  }}
-  aria-hidden="true" // Mark as decorative for accessibility
-></div>
+            <div
+              key={`dot-${i}`} // Unique key to avoid React reconciliation issues
+              className="absolute w-1 h-1 bg-white/20 rounded-full animate-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${3 + Math.random() * 4}s`,
+              }}
+              aria-hidden="true" // Mark as decorative for accessibility
+            ></div>
           ))}
         </div>
       </div>
@@ -499,7 +499,7 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <main className="relative z-10 min-h-screen flex items-center justify-center px-4 sm:px-6 ">
+<main className="relative z-10 min-h-screen flex items-center justify-center pt-20 md:pt-0 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto w-full">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Left Column - Content */}
@@ -566,8 +566,8 @@ export default function HomePage() {
                       <span className="text-green-400 font-semibold">
                         Node.js
                       </span>
-                     
-                    
+
+
                       . Currently pursuing AI & Data Science at{" "}
                       <span className="text-pink-400 font-semibold">
                         Jabalpur Engineering College
@@ -680,11 +680,13 @@ export default function HomePage() {
                       },
                       {
                         icon: Download,
-                        href: "#",
+                        href: "/Nitesh-Resume.pdf", // ✅ Public folder me resume hona chahiye
                         label: "Resume",
                         color: "hover:bg-green-600",
                         count: "PDF",
-                      },
+                        download: true // optional: agar aap download attribute use karte ho rendering me
+                      }
+
                     ].map((social, index) => (
                       <div key={index} className="relative group">
                         <a
@@ -722,18 +724,18 @@ export default function HomePage() {
                     <div className="text-center mb-6 sm:mb-8">
                       <div className="relative inline-block group mb-6">
                         {/* Professional Avatar */}
-                      <div className="w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl p-1 group-hover:scale-105 transition-transform duration-300">
-  <div className="w-full h-full bg-slate-900 rounded-xl flex items-center justify-center relative overflow-hidden">
-    <Image
-      src={myimage}
-      alt="my image"
-      className="w-full h-full object-cover rounded-xl"
-    />
+                        <div className="w-32 h-32 sm:w-40 sm:h-40 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl p-1 group-hover:scale-105 transition-transform duration-300">
+                          <div className="w-full h-full bg-slate-900 rounded-xl flex items-center justify-center relative overflow-hidden">
+                            <Image
+                              src={myimage}
+                              alt="my image"
+                              className="w-full h-full object-cover rounded-xl"
+                            />
 
-    {/* Shine Effect */}
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-  </div>
-</div>
+                            {/* Shine Effect */}
+                            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                          </div>
+                        </div>
 
 
                         {/* Status Indicator */}
@@ -817,20 +819,23 @@ export default function HomePage() {
                     </div> */}
 
                     {/* Quick Actions */}
-                    <div className="space-y-3">
+                    <div className="space-y-3 ">
                       <Link href="/contact">
                         <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105">
                           <Mail className="w-4 h-4 mr-2" />
                           Get In Touch
                         </Button>
                       </Link>
-                      <Button
-                        variant="outline"
-                        className="w-full border-white/20 text-white hover:bg-white/10 py-3 rounded-xl font-semibold transition-all duration-300 bg-transparent"
-                      >
-                        <Download className="w-4 h-4 mr-2" />
-                        Download CV
-                      </Button>
+                      <a href="/Nitesh-Resume.pdf" target="_blank" rel="noopener noreferrer" className="pt-4">
+                        <Button
+                          variant="outline"
+                          className="w-full border-white/20 text-white hover:bg-white/10 py-3 rounded-xl font-semibold transition-all duration-300 bg-transparent"
+                        >
+                          <Download className="w-4 h-4 mr-2" />
+                          View CV
+                        </Button>
+                      </a>
+
                     </div>
                   </CardContent>
                 </Card>
@@ -906,11 +911,10 @@ export default function HomePage() {
             {experiences.map((exp, index) => (
               <div
                 key={index}
-                className={`transition-all duration-1000 delay-${(index + 1) * 200} ${
-                  isLoaded
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
+                className={`transition-all duration-1000 delay-${(index + 1) * 200} ${isLoaded
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
               >
                 <Card className="bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group overflow-hidden hover:scale-[1.02]">
                   <div className={`h-2 bg-gradient-to-r ${exp.color}`}></div>
@@ -952,11 +956,10 @@ export default function HomePage() {
                           variant={
                             exp.status === "Ongoing" ? "default" : "secondary"
                           }
-                          className={`${
-                            exp.status === "Ongoing"
-                              ? "bg-green-600 hover:bg-green-700 text-white animate-pulse"
-                              : "bg-slate-600 hover:bg-slate-700 text-white"
-                          } px-4 py-2 text-sm font-medium`}
+                          className={`${exp.status === "Ongoing"
+                            ? "bg-green-600 hover:bg-green-700 text-white animate-pulse"
+                            : "bg-slate-600 hover:bg-slate-700 text-white"
+                            } px-4 py-2 text-sm font-medium`}
                         >
                           {exp.status}
                         </Badge>
@@ -1072,11 +1075,10 @@ export default function HomePage() {
             {featuredProjects.map((project, index) => (
               <div
                 key={index}
-                className={`transition-all duration-1000 delay-${(index + 1) * 200} ${
-                  isLoaded
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
+                className={`transition-all duration-1000 delay-${(index + 1) * 200} ${isLoaded
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
               >
                 <Card className="bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group h-full overflow-hidden hover:scale-105">
                   <div className="relative overflow-hidden">
@@ -1228,15 +1230,14 @@ export default function HomePage() {
           </div>
 
           {/* Skill Categories */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-6 mb-12">
             {skillCategories.map((category, index) => (
               <div
                 key={index}
-                className={`transition-all duration-1000 delay-${(index + 1) * 100} ${
-                  isLoaded
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
+                className={`transition-all duration-1000 delay-${(index + 1) * 100} ${isLoaded
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
               >
                 <Card className="bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group p-6 hover:scale-105 h-full">
                   <div className="text-center">
@@ -1269,11 +1270,10 @@ export default function HomePage() {
             {featuredSkills.map((skill, index) => (
               <div
                 key={index}
-                className={`transition-all duration-1000 delay-${(index + 1) * 100} ${
-                  isLoaded
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
+                className={`transition-all duration-1000 delay-${(index + 1) * 100} ${isLoaded
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
               >
                 <Card className="bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 group p-6 hover:scale-105">
                   <div className="flex items-center justify-between mb-4">
@@ -1298,11 +1298,10 @@ export default function HomePage() {
                         {[...Array(5)].map((_, i) => (
                           <Star
                             key={i}
-                            className={`w-3 h-3 ${
-                              i < Math.floor(skill.level / 20)
-                                ? "text-yellow-400 fill-current"
-                                : "text-white/20"
-                            }`}
+                            className={`w-3 h-3 ${i < Math.floor(skill.level / 20)
+                              ? "text-yellow-400 fill-current"
+                              : "text-white/20"
+                              }`}
                           />
                         ))}
                       </div>
@@ -1455,13 +1454,16 @@ export default function HomePage() {
                       <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                     </Button>
                   </Link>
-                  <Button
-                    variant="outline"
-                    className="w-full sm:w-auto group border-2 border-purple-400 text-purple-300 hover:bg-purple-500 hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 bg-transparent hover:scale-105"
-                  >
-                    <Download className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
-                    Download Resume
-                  </Button>
+                  <a href="/Nitesh-Resume.pdf" target="_blank" rel="noopener noreferrer">
+                    <Button
+                      variant="outline"
+                      className="w-full sm:w-auto group border-2 border-purple-400 text-purple-300 hover:bg-purple-500 hover:text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 bg-transparent hover:scale-105"
+                    >
+                      <Download className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
+                      Download Resume
+                    </Button>
+                  </a>
+
                 </div>
 
                 {/* Contact Methods */}

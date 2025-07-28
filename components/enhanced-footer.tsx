@@ -236,14 +236,24 @@ export function EnhancedFooter() {
 
                 {/* Resume Download */}
                 <div className="mt-6">
-                  <Button
-                    variant="outline"
-                    className="w-full border-purple-500/50 text-purple-300 hover:bg-purple-500 hover:text-white transition-all duration-300 group bg-transparent"
+                  <a
+                    href="/Nitesh-Resume.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="Download Resume"
+                    aria-label="Download Resume"
                   >
-                    <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                    Download Resume
-                  </Button>
+                    <Button
+                      variant="outline"
+                      className="w-full border-purple-500/50 text-purple-300 hover:bg-purple-500 hover:text-white transition-all duration-300 group bg-transparent"
+                    >
+                      <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+                      Download Resume
+                    </Button>
+                  </a>
                 </div>
+
+
               </div>
 
               {/* Services */}
@@ -344,16 +354,16 @@ export function EnhancedFooter() {
                 {/* Copyright */}
                 <div className="text-center md:text-left">
                   <p className="text-gray-400 text-sm mb-2">
-                    © 2025 Nitesh Verma. All rights reserved.   
+                    © 2025 Nitesh Verma. All rights reserved.
                   </p>
                   {/* <div className="flex items-center justify-center md:justify-start gap-2 text-xs text-gray-500">
                     <span>Made with</span>
                     <Heart className="w-3 h-3 text-red-400 animate-pulse" />
                     <span>and lots of</span>
                     <Coffee className="w-3 h-3 text-yellow-400" /> */}
-                    {/* <span>in India</span> */}
-                    {/* <span className="mx-2">•</span> */}
-                    {/* <span>Last updated: {new Date().toLocaleDateString()}</span> */}
+                  {/* <span>in India</span> */}
+                  {/* <span className="mx-2">•</span> */}
+                  {/* <span>Last updated: {new Date().toLocaleDateString()}</span> */}
                   {/* </div> */}
                 </div>
 
@@ -368,14 +378,14 @@ export function EnhancedFooter() {
                       Hire Me
                     </Button>
                   </Link>
-                  <Button
+               <a href="https://github.com/niteshverma01">   <Button
                     size="sm"
                     variant="outline"
                     className="border-white/20 text-white/80 hover:bg-white/10 hover:text-white bg-transparent px-4 py-2 rounded-lg font-medium transition-all duration-300"
                   >
                     <Star className="w-4 h-4 mr-2" />
                     Support
-                  </Button>
+                  </Button></a>
                 </div>
               </div>
 

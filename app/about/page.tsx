@@ -1,4 +1,4 @@
-  "use client"
+"use client"
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
@@ -35,7 +35,7 @@ import {
   Quote,
   Award,
   Users,
-  Briefcase,
+  Briefcase, X, Menu
 } from "lucide-react"
 import Link from "next/link"
 
@@ -44,6 +44,7 @@ export default function AboutPage() {
   const [activeTab, setActiveTab] = useState("story")
   const [hoveredSkill, setHoveredSkill] = useState<number | null>(null)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     setIsLoaded(true)
@@ -86,12 +87,12 @@ export default function AboutPage() {
       color: "from-blue-500 to-cyan-500",
       description: "Building modern web apps",
     },
- {
-  icon: Brain,
-  label: "Database",
-  color: "from-purple-500 to-indigo-500",
-  description: "Managing and structuring data",
-},
+    {
+      icon: Brain,
+      label: "Database",
+      color: "from-purple-500 to-indigo-500",
+      description: "Managing and structuring data",
+    },
 
     {
       icon: Palette,
@@ -107,9 +108,9 @@ export default function AboutPage() {
     },
     {
       icon: Bed,
-     label: "Sleeping",
-    color: "from-yellow-500 to-orange-500",
-    description: "Recharging creativity",
+      label: "Sleeping",
+      color: "from-yellow-500 to-orange-500",
+      description: "Recharging creativity",
     },
     { icon: Camera, label: "Photography", color: "from-indigo-500 to-purple-500", description: "Capturing moments" },
     { icon: Gamepad2, label: "Gaming", color: "from-red-500 to-pink-500", description: "Strategy & adventure games" },
@@ -137,18 +138,26 @@ export default function AboutPage() {
     { year: "2024", title: "Web Development", description: "Discovered React & fell in love", icon: Heart },
     { year: "2024", title: "Full Stack Journey", description: "Mastered MERN stack development", icon: Zap },
     { year: "2025", title: "First Internship", description: "CodeXintern - React Developer", icon: Rocket },
-{
-  year: "2025",
-  title: "Third Internship",
-  description: "Building scalable web apps with modern stacks",
-  icon: Brain,
-}
+    {
+      year: "2025",
+      title: "Third Internship",
+      description: "Building scalable web apps with modern stacks",
+      icon: Brain,
+    }
   ]
   const tabs = [
     { id: "story", label: "My Story", icon: User },
     { id: "skills", label: "Skills", icon: Code },
     { id: "interests", label: "Interests", icon: Heart },
     { id: "journey", label: "Journey", icon: Rocket },
+  ]
+
+  const navItems = [
+    { href: "/about", label: "About" },
+    { href: "/experience", label: "Experience" },
+    { href: "/skills", label: "Skills" },
+    { href: "/projects", label: "Projects" },
+    { href: "/contact", label: "Contact" },
   ]
 
   return (
@@ -188,40 +197,74 @@ export default function AboutPage() {
       ></div>
 
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-40 bg-black/10 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+      <nav className="fixed top-0 w-full z-50 bg-black/10 backdrop-blur-xl border-b border-white/5">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <Link
               href="/"
-              className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+              className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
             >
               Nitesh Verma
             </Link>
+
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/about" className="text-purple-400 font-semibold relative group">
-                About
-                <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-purple-400 to-pink-400"></span>
-                <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity">
-                  Current Page
-                </div>
-              </Link>
-              {[
-                { href: "/experience", label: "Experience" },
-                { href: "/skills", label: "Skills" },
-                { href: "/projects", label: "Projects" },
-                { href: "/contact", label: "Contact" },
-              ].map((item) => (
+              {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-white/80 hover:text-white transition-all duration-300 relative group"
+                  className={`text-white/80 hover:text-white transition-all duration-300 relative group ${item.href === "/projects" ? "text-purple-400 font-semibold" : ""
+                    }`}
                 >
                   {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 group-hover:w-full transition-all duration-300"></span>
+                  <span
+                    className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300 ${item.href === "/projects" ? "w-full" : "w-0 group-hover:w-full"
+                      }`}
+                  ></span>
                 </Link>
               ))}
             </div>
+
+            {/* Mobile Menu Button */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="text-white hover:bg-white/10 p-2"
+                aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+              >
+                {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </Button>
+            </div>
           </div>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10 animate-slide-down">
+              <div className="flex flex-col space-y-4 px-4 py-6">
+                {navItems.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`text-lg text-white/80 hover:text-white transition-colors duration-300 py-2 px-3 rounded-lg hover:bg-white/10 flex items-center gap-3 ${item.href === "/projects" ? "text-purple-400 font-semibold" : ""
+                      }`}
+                  >
+                    <div className="w-2 h-2 bg-purple-400 rounded-full"></div>
+                    {item.label}
+                  </Link>
+                ))}
+                <div className="pt-4 border-t border-white/10">
+                  <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white rounded-full">
+                      Get In Touch
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
@@ -287,14 +330,14 @@ export default function AboutPage() {
                   <div className="text-center mb-8">
                     {/* Enhanced Avatar */}
                     <div className="relative inline-block group mb-6">
-                   <div className="w-32 h-32 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl p-1 group hover:scale-105 transition-transform duration-300 animate-gradient bg-[length:200%_200%]">
-  <div className="w-full h-full bg-slate-950 rounded-xl flex items-center justify-center relative overflow-hidden">
-    <Image src={myimage} alt="my image" className="w-full h-full object-cover rounded-xl" />
-    
-    {/* Shine effect */}
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-  </div>
-</div>
+                      <div className="w-32 h-32 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 rounded-2xl p-1 group hover:scale-105 transition-transform duration-300 animate-gradient bg-[length:200%_200%]">
+                        <div className="w-full h-full bg-slate-950 rounded-xl flex items-center justify-center relative overflow-hidden">
+                          <Image src={myimage} alt="my image" className="w-full h-full object-cover rounded-xl" />
+
+                          {/* Shine effect */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                        </div>
+                      </div>
 
 
                       {/* Status Indicators */}
@@ -318,7 +361,7 @@ export default function AboutPage() {
                       <Badge className="bg-gradient-to-r from-purple-600 to-pink-600 text-white">
                         Full Stack Developer
                       </Badge>
-                     
+
                     </div>
                   </div>
 
@@ -344,40 +387,49 @@ export default function AboutPage() {
 
                   {/* Quick Actions */}
                   <div className="space-y-3">
-                    <Link href="/contact">
-                      <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white group">
-                        <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                        Get In Touch
-                      </Button>
-                    </Link>
-                    <Button
-                      variant="outline"
-                      className="w-full border-white/20 text-white hover:bg-white/10 bg-transparent group"
-                    >
-                      <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
-                      Download CV
-                    </Button>
+               <div className="mb-4">
+  <Link href="/contact">
+    <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white group">
+      <Mail className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+      Get In Touch
+    </Button>
+  </Link>
+</div>
+
+<div>
+  <a href="/Nitesh-Resume.pdf" target="_blank" rel="noopener noreferrer">
+    <Button
+      variant="outline"
+      className="w-full border-white/20 text-white hover:bg-white/10 bg-transparent group"
+    >
+      <Download className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
+      Download CV
+    </Button>
+  </a>
+</div>
+
+
 
                     {/* Social Links */}
                     <div className="flex gap-2 pt-2">
-  {[
-    { Icon: Github, href: "https://github.com/niteshverma01", color: "hover:bg-gray-600" },
-    { Icon: Linkedin, href: "https://www.linkedin.com/in/nitesh--verma01/", color: "hover:bg-blue-600" },
-    { Icon: ExternalLink, href: "https://your-portfolio.com", color: "hover:bg-purple-600" }, // Replace with valid URL
-  ].map((social) => (
-    <Button
-      key={social.href} // Use href as a unique key
-      variant="outline"
-      size="sm"
-      className={`flex-1 border-white/20 text-white bg-transparent ${social.color} group`}
-      asChild // If Button supports passing as a link (e.g., from shadcn/ui)
-    >
-      <a href={social.href} target="_blank" rel="noopener noreferrer">
-        <social.Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
-      </a>
-    </Button>
-  ))}
-</div>
+                      {[
+                        { Icon: Github, href: "https://github.com/niteshverma01", color: "hover:bg-gray-600" },
+                        { Icon: Linkedin, href: "https://www.linkedin.com/in/nitesh--verma01/", color: "hover:bg-blue-600" },
+                        { Icon: ExternalLink, href: "https://your-portfolio.com", color: "hover:bg-purple-600" }, // Replace with valid URL
+                      ].map((social) => (
+                        <Button
+                          key={social.href} // Use href as a unique key
+                          variant="outline"
+                          size="sm"
+                          className={`flex-1 border-white/20 text-white bg-transparent ${social.color} group`}
+                          asChild // If Button supports passing as a link (e.g., from shadcn/ui)
+                        >
+                          <a href={social.href} target="_blank" rel="noopener noreferrer">
+                            <social.Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                          </a>
+                        </Button>
+                      ))}
+                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -395,11 +447,10 @@ export default function AboutPage() {
                       key={tab.id}
                       variant={activeTab === tab.id ? "default" : "outline"}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`group ${
-                        activeTab === tab.id
-                          ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
-                          : "border-white/20 text-white/80 hover:bg-white/10 hover:text-white bg-transparent"
-                      }`}
+                      className={`group ${activeTab === tab.id
+                        ? "bg-gradient-to-r from-purple-600 to-pink-600 text-white"
+                        : "border-white/20 text-white/80 hover:bg-white/10 hover:text-white bg-transparent"
+                        }`}
                     >
                       <tab.icon className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform" />
                       {tab.label}
@@ -484,11 +535,10 @@ export default function AboutPage() {
                                       {[...Array(5)].map((_, i) => (
                                         <Star
                                           key={i}
-                                          className={`w-3 h-3 ${
-                                            i < Math.floor(skill.level / 20)
-                                              ? "text-yellow-400 fill-current"
-                                              : "text-white/20"
-                                          }`}
+                                          className={`w-3 h-3 ${i < Math.floor(skill.level / 20)
+                                            ? "text-yellow-400 fill-current"
+                                            : "text-white/20"
+                                            }`}
                                         />
                                       ))}
                                     </div>
@@ -617,52 +667,52 @@ export default function AboutPage() {
                   </CardContent>
                 </Card>
               </div>
-                  {/* Enhanced CTA Section */}
-          <div
-            className={`text-center transition-all duration-1000 delay-1300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
-          >
-            <Card className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 relative overflow-hidden group">
-              {/* Animated Background */}
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 animate-pulse"></div>
+              {/* Enhanced CTA Section */}
+              <div
+                className={`text-center transition-all duration-1000 delay-1300 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+              >
+                <Card className="bg-white/5 backdrop-blur-xl border border-white/10 p-8 relative overflow-hidden group">
+                  {/* Animated Background */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-pink-600/20 animate-pulse"></div>
 
-              {/* Floating Elements */}
-              <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-full blur-xl animate-float"></div>
-              <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-xl animate-float delay-1000"></div>
+                  {/* Floating Elements */}
+                  <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-full blur-xl animate-float"></div>
+                  <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-r from-blue-400/20 to-cyan-400/20 rounded-full blur-xl animate-float delay-1000"></div>
 
-              <div className="relative z-10">
-                <div className="flex items-center justify-center gap-3 mb-6">
-                  <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
-                  <h3 className="text-2xl font-bold text-white">Let's Connect!</h3>
-                  <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
-                </div>
-                <p className="text-white/70 mb-6 max-w-2xl mx-auto leading-relaxed">
-                  I'm always excited to meet new people and discuss technology, projects, or just have a friendly chat.
-                  Whether you want to collaborate, need advice, or simply want to say hello!
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href="/contact">
-                    <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 group">
-                      <Mail className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                      Get In Touch
-                    </Button>
-                  </Link>
-                  <Link href="/projects">
-                    <Button
-                      variant="outline"
-                      className="border-2 border-white/20 text-white hover:bg-white/10 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 backdrop-blur-sm bg-transparent group"
-                    >
-                      <Rocket className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-                      View My Work
-                    </Button>
-                  </Link>
-                </div>
+                  <div className="relative z-10">
+                    <div className="flex items-center justify-center gap-3 mb-6">
+                      <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
+                      <h3 className="text-2xl font-bold text-white">Let's Connect!</h3>
+                      <Sparkles className="w-8 h-8 text-yellow-400 animate-pulse" />
+                    </div>
+                    <p className="text-white/70 mb-6 max-w-2xl mx-auto leading-relaxed">
+                      I'm always excited to meet new people and discuss technology, projects, or just have a friendly chat.
+                      Whether you want to collaborate, need advice, or simply want to say hello!
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                      <Link href="/contact">
+                        <Button className="bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 group">
+                          <Mail className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                          Get In Touch
+                        </Button>
+                      </Link>
+                      <Link href="/projects">
+                        <Button
+                          variant="outline"
+                          className="border-2 border-white/20 text-white hover:bg-white/10 px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 backdrop-blur-sm bg-transparent group"
+                        >
+                          <Rocket className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
+                          View My Work
+                        </Button>
+                      </Link>
+                    </div>
+                  </div>
+                </Card>
               </div>
-            </Card>
-          </div>
             </div>
           </div>
 
-      
+
         </div>
       </main>
     </div>
