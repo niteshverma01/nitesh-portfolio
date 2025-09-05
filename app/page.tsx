@@ -134,7 +134,7 @@ export default function HomePage() {
       company: "Payzon India",
       role: "Software Developer",
       duration: "Current",
-      period: "2024 - Present",
+      period: "2025 - Present",
       type: "Internship",
       status: "Ongoing",
       description:
@@ -154,7 +154,7 @@ export default function HomePage() {
       company: "Meteoros Automation",
       role: "Frontend Engineer",
       duration: "3 Months",
-      period: "2024",
+      period: "2025",
       type: "Internship",
       status: "Completed",
       description:
@@ -174,7 +174,7 @@ export default function HomePage() {
       company: "CodeXintern",
       role: "React Developer",
       duration: "1 Month",
-      period: "2023",
+      period: "2024",
       type: "Internship",
       status: "Completed",
       description:
